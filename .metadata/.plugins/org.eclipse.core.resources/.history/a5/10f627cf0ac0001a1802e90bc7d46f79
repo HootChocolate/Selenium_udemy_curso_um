@@ -1,0 +1,18 @@
+package suporte;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class BaseUtil {
+
+	protected WebDriver navegador;
+	
+	public BaseUtil(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+	
+	public WebElement findElementBy(By location) {
+		return navegador.findElement(location);
+	}
+}

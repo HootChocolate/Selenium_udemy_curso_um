@@ -1,0 +1,29 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class LoginPage {
+	
+	WebDriver navegador;
+	
+	public LoginPage(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+	
+	/**
+	 * Método que abre a tela de preenchimento de usuario e senha após o usuário clicar
+	 * sobre o botão "Sing in".
+	 * 
+	 * @author jay
+	 * @date 06/07/2020
+	 */
+	public LoginFormPage clickSingIn() {
+		
+		navegador.findElement(By.xpath("//div[@class=\"nav-wrapper\"]//a[@data-target=\"signinbox\"]")).click();
+		
+		return new LoginFormPage(navegador);
+	}
+	
+	
+}

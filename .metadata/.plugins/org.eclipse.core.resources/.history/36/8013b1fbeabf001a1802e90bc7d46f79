@@ -1,0 +1,13 @@
+package util;
+
+public enum InformationType {
+	
+	PHONE("Phone"),
+	EMAIL("Email");
+	
+	private String type;
+	
+	private InformationType(String type) {
+		this.type = type;
+	}
+}

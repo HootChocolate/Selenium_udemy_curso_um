@@ -1,0 +1,4 @@
+testAdicionaInformacaoAdicionalDoUsuario,login,senha,tipo,contato,mensagem
+										,jose,josejose,E-mail,email@email.com,Your contact has been added!
+testRemoveContatoDoUsuario,login,senha,tipo,contato,mensagem
+						  ,jose,josejose,Phone,+5545123456789,"Rest in peace, dear phone!"

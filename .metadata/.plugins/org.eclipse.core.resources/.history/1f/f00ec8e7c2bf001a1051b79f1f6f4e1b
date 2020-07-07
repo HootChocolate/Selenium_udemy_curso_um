@@ -1,0 +1,21 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class LoginPage {
+
+	private WebDriver navegador;
+	
+	public LoginPage(WebDriver navegador) {
+		navegador = navegador;
+	}
+	
+	public LoginPage clickSingIn() {
+		
+		navegador.findElement(By.xpath("//div[@class=\"nav-wrapper\"]//a[@data-target=\"signinbox\"]")).click();
+		
+		return this;
+	}
+	
+}

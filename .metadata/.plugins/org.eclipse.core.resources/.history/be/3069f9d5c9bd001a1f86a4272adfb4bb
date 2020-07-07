@@ -1,0 +1,17 @@
+package initialTest;
+
+import java.security.Timestamp;
+import java.util.Date;
+
+import org.junit.Test;
+
+public class aux {
+
+	@Test
+	public void ts() {
+		Date date = new Date();
+		System.out.println(date.getTime());
+		System.out.println(date.getDate());
+		System.out.println(date.getMinutes());
+	}
+}

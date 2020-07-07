@@ -1,0 +1,17 @@
+package suporte;
+
+import org.openqa.selenium.WebDriver;
+
+public class Screenshot {
+
+	/** Este método é utilizado para tirar uma foto da tela do WebDriver
+	 * e salvar no caminho especificado.
+	 * 
+	 * @author jay
+	 * @date 04/07/2020
+	 */
+	public void getScreenshot(WebDriver navegador, String pathToSave) {
+		
+	}
+	
+}

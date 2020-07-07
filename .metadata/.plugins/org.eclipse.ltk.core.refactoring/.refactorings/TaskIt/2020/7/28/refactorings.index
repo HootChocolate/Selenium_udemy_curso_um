@@ -1,0 +1,19 @@
+1594065036565	Rename compilation unit 'testAdicionarInformacaoAdicionalDoUsuario_refactorPageObject.java'
+1594066170638	Delete element
+1594066177186	Delete element
+1594066735944	Rename compilation unit 'adicionaInformacaoAdicionalUsuarioPageObjectTest.java'
+1594071075493	Rename type 'PaginaDoUsuario'
+1594071302143	Rename type 'PaginaSecreta'
+1594075490774	Rename type 'Base'
+1594075548440	Delete elements
+1594078876010	Rename method 'clicarBotaoSingIn'
+1594078888915	Rename method 'clicarSingIns'
+1594078901342	Rename method 'clicarSignInLogin'
+1594082435111	Rename type 'AddMoreDataAboutYouType'
+1594082655425	Delete elements
+1594084605610	Rename method 'removeContatoDoUsuario'
+1594084720388	Rename method 'confirmarRemocaoDeContato'
+1594084807233	Rename method 'validaSeOValorFoiSalvo'
+1594097492274	Rename type 'PaginaUsuarioLogado'
+1594102442882	Rename method 'mensagemToast'
+1594105484895	Rename type 'adicionaInformacaoAdicionalUsuarioPageObject'

@@ -1,0 +1,40 @@
+package suporte;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+
+import com.google.common.io.Files;
+
+public class Screenshot {
+
+	/** Este método é utilizado para tirar uma foto da tela do WebDriver
+	 * e salvar no caminho especificado.
+	 * fileName com extensão
+	 * 
+	 * @param navegador
+	 * @param fileName
+	 * @author jay
+	 * @date 04/07/2020
+	 */
+	public void takeScreenshot(WebDriver navegador, String fileName) {
+		
+		String pathToSave = "/home/jay/treinamento/Selenium-curso-um-taskIt/TaskIt/src/test/resources/screenshot/";
+		
+		// Tira foto fazendo cast porque WebDriver nao tem getScreenshotAs - Nesse caso é um FILE, mas poderia ser BASE64
+		File screenshot = ((TakesScreenshot) navegador).getScreenshotAs(OutputType.FILE);
+		
+		try {
+			
+			// Copia o a foto tirada para o endereço que é pra salvar
+			Files.copy(screenshot, new File(pathToSave));
+			
+		} catch (IOException e) {
+			System.out.println("[ERROR] Ao salvar o screenshot.\n" + e.getMessage());
+		}
+	}
+	
+}

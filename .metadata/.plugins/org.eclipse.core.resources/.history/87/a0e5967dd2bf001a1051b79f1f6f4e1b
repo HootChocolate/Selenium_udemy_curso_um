@@ -1,0 +1,33 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class PageMoreAboutYou {
+	
+	WebDriver navegador;
+	
+	public PageMoreAboutYou(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+	
+	public void AddMoreData_adicionarTelefone(String telefone) {
+		System.out.println("Adicionar: " + telefone);
+	}
+	
+	public void AddMoreData_adicionarEmail(String email) {
+		
+	}
+	
+	public void removerTelefone(String telefone) {
+		
+	}
+	
+	public PageMoreAboutYou abrirAbaDeAdicionarInformacao() {
+		
+		navegador.findElement(By.id("moredata")).findElement(By.xpath("//button[@data-target=\"addmoredata\"]")).click();
+		
+		return this;
+	}
+	
+}

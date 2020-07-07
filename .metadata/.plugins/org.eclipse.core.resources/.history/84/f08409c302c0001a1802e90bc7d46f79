@@ -1,0 +1,110 @@
+package pages;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.rules.TestName;
+import org.openqa.selenium.By;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import suporte.BaseUtil;
+import suporte.Screenshot;
+
+public class MoreDataAboutYou extends BaseUtil{
+	
+	private static TestName testName;
+
+	public MoreDataAboutYou(WebDriver navegador) {
+		super(navegador);
+	}
+
+	/**Clica sobre o botão ADD MORE DATA para adicionar informação sobre o usuário
+	 * 
+	 * @author jay
+	 * @return MoreDataAboutYou
+	 */
+	public MoreDataAboutYou clicarBotaoAddMoreData() {
+		
+		navegador.findElement(By.id("moredata")).findElement(By.xpath("//button[@data-target=\"addmoredata\"]")).click();
+		
+		return this;
+	}
+	
+	/** Escolhe no Combo Box, o tipo de dado que será salvo.
+	 * 
+	 * @author jay
+	 * @param tipo
+	 * @return MoreDataAboutYou
+	 */
+	public MoreDataAboutYou tipoDeDadoParaSalvar(String tipo) {
+		
+		WebElement tipoSelecionado = findElementBy(By.name("type"));
+		new Select(tipoSelecionado).selectByVisibleText(tipo);
+		
+		return this;
+	}
+	
+	/**Adiciona o telefone passado no campo de contato;
+	 * 
+	 * @param telefone
+	 * @return MoreDataAboutYou
+	 */
+	public MoreDataAboutYou adicionarTelefone(String telefone) {
+		
+		navegador.findElement(By.name("contact")).sendKeys(telefone);
+		
+		return this;
+	}
+	
+	/**
+	 * Clica no botão de salvar um contato ou email.
+	 * 
+	 * @return MoreDataAboutYou
+	 */
+	public MoreDataAboutYou salvarContato() {
+		navegador.findElement(By.linkText("SAVE")).click();
+		
+		return this;
+	}
+	
+	/**Remove o telefone passado da lista de contatos do usuário.
+	 * 
+	 * @param telefone
+	 * @return MoreDataAboutYou
+	 */
+	public MoreDataAboutYou clicarIconeRemoverContato(String telefone) {
+		WebElement iconeLixeira = navegador.findElement(By.xpath("//span[text()=\"" + telefone + "\"]//following-sibling::a"));
+		
+		System.out.println(iconeLixeira);
+		
+		iconeLixeira.click();
+		
+		return this;
+	}
+	
+	public MoreDataAboutYou aceitarPopUp() {
+		navegador.switchTo().alert().accept();
+		
+		return this;
+	}
+	
+	public void getScreenshot() {
+		Screenshot screenshot = new Screenshot();
+		screenshot.takeScreenshot(navegador, "");
+		
+	}
+	
+	public void validaSeOContatoFoiSalvo() {	
+		String mensagem = navegador.findElement(By.id("toast-container")).getText();
+		
+		assertEquals("Mensagem de contato salvo em divergencia com o esperado.", "Your contact has been added!", mensagem);
+	}
+	
+	public void validaSeOContatoFoiRemovido() {
+		String mensagem = navegador.findElement(By.id("toast-container")).getText();
+		
+		assertEquals("Mensagem de contato salvo em divergencia com o esperado.", "Rest in peace, dear phone!", mensagem);
+	}
+}

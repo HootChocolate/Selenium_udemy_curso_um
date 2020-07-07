@@ -1,0 +1,32 @@
+package suporte;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class Web {
+
+	/**Configura o ChromeDriver, adiciona opções e devolve uma instância de navegador.
+	 * 
+	 * @author jay
+	 * @param site
+	 * @return WebDriver
+	 */
+	public static WebDriver createChrome(String site) {
+		
+		System.setProperty("webdriver.chrome.driver", "/home/jay/programs/ChromeDriver/chromedriver");
+		
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("disable-web-security"); // Desabilita CORS
+		
+		WebDriver navegador = new ChromeDriver(options);
+
+		navegador.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		navegador.get(site);
+
+		return navegador;
+	}
+	
+}

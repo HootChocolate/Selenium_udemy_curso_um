@@ -1,0 +1,12 @@
+package initialTest;
+
+import org.junit.Test;
+
+public class aux {
+
+	@Test
+	public void ts() {
+		
+		
+	}
+}

@@ -1,0 +1,15 @@
+package suporte;
+
+import java.security.Timestamp;
+
+public class Generate {
+
+	public static String dataHoraFormatada() {
+		
+		long time = System.currentTimeMillis();
+		System.out.println(time);
+				
+		return null;
+	}
+	
+}

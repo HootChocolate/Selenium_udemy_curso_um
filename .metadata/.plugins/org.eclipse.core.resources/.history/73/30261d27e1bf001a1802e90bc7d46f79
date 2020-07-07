@@ -1,0 +1,12 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+import suporte.BaseUtil;
+
+public class FormLoginPage extends BaseUtil {
+
+	public FormLoginPage(WebDriver navegador) {
+		super(navegador);
+	}
+}

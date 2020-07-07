@@ -1,0 +1,19 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import suporte.BaseUtil;
+
+public class LoginPage extends BaseUtil{
+
+	public LoginPage(WebDriver navegador) {
+		super(navegador);
+	}
+	
+	public FormLoginPage clicarBotaoSingIn() {
+		navegador.findElement(By.xpath("//div[@class=\"nav-wrapper\"]//a[@data-target=\"signinbox\"]")).click();
+		
+		return new FormLoginPage();
+	}
+}

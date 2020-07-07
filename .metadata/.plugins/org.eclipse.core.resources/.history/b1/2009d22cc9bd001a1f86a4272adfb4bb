@@ -1,0 +1,14 @@
+package initialTest;
+
+import java.security.Timestamp;
+
+import org.junit.Test;
+
+public class aux {
+
+	@Test
+	public void ts() {
+		Timestamp time;
+		System.out.println(time);
+	}
+}

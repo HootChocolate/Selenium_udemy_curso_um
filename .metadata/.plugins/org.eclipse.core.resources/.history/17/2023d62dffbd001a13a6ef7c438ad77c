@@ -1,0 +1,136 @@
+package testes;
+
+import java.util.Calendar;
+import java.util.List;
+import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class testaInsercaoEmailDoUsuario {
+
+	WebDriver navegador;
+	
+	@BeforeClass
+	public static void beforeClass() {
+	    System.setProperty("webdriver.chrome.driver" ,"/home/jay/programs/ChromeDriver/chromedriver");
+	}
+	
+	/**
+	 * Nesse setup é configurado e iniciado o Chrome, é realizado o login e para na tela inicial
+	 * @author jay
+	 * @date 04/07/2020
+	 * */
+	@Before
+	public void setUp() {
+		
+		ChromeOptions options = new ChromeOptions();
+		
+		// disabilita o CORS
+		options.addArguments("disable-web-security");
+		
+		// abre o navegador
+		navegador = new ChromeDriver(options);
+		
+		// atraso de impicito
+		navegador.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		// acessa o site
+		navegador.get("http://juliodelima.com.br/taskit/");
+		
+		// clica no botao de Sign in, pego do linkText
+		navegador.findElement(By.linkText("Sign in")).click();
+		
+		// pega o formulario de login
+		WebElement formLogin = navegador.findElement(By.id("signinbox"));
+		
+		// envia o login, pego do formulario pelo name login 
+		formLogin.findElement(By.name("login")).sendKeys("jose");
+		
+		// envia a senha, pego do formulario pelo name password
+		formLogin.findElement(By.name("password")).sendKeys("josejose");
+		
+		// clica no link de SIGN IN, pego do linkText SIGN IN
+		formLogin.findElement(By.linkText("SIGN IN")).click();
+	}
+	
+	/**
+	 * Nesse teste é realizado o clique no botão LET'S ADD MORE TASKS!,
+	 * depois que é redirecionado para outra tela é clicado no botão 
+	 * + ADD A TASK, preenche as informações da task e clica no botão SAVE.
+	 */
+	@Test
+	public void testLetsAddSomeTasksButton() {
+
+		// clica no botao LET'S ADD SOME TASKS!,pego através do linkText
+		navegador.findElement(By.linkText("LET'S ADD SOME TASKS!")).click();
+		
+		// clica no botao + ADD A TASK, pego pelo XPath
+		navegador.findElement(By.xpath("//div[@class=\"section\"]//button[@data-target=\"addtask\"]")).click();
+		
+		// pega o formulario de task, atraves do id addtask
+		WebElement divFormulario = navegador.findElement(By.id("addtask"));
+		
+		// digita no formulario o titulo da task, pego pelo name "title"
+		divFormulario.findElement(By.name("title")).sendKeys("Title");
+		
+		// clica no input de data, pego pelo xpath //div[@class=\"row\"]//div[@class=\"picker\"]//following-sibling::input
+		navegador.findElement(By.xpath("//div[@class=\"row\"]//div[@class=\"picker\"]//following-sibling::input")).click();
+		
+		// pega os dias do mês, para poder adicionar a uma lista de WebElements
+		WebElement days = navegador.findElement(By.xpath("//table[@class=\"picker__table\"]"));
+		
+		new WebDriverWait(navegador, 10).until(ExpectedConditions.elementToBeSelected(By.xpath("//div[@class=\"row\"]//div[@class=\"picker\"]//following-sibling::input")));
+		
+		// cria uma lista de dias do mês, pego do elementos com tagName td
+		List<WebElement> daysOfMounth = days.findElements(By.tagName("td"));
+		
+		// pega o dia atual
+		String today = getCurrentDay();
+		
+		// escolhe na lista de dias do mês a dia atual
+		for(WebElement day : daysOfMounth) {
+			if(day.getText().equals(today)) {
+				day.click();
+				break;
+			}
+		}
+		
+		await(40000);
+	
+		
+	}
+	
+	private void await(int milliseconds) {
+		try {
+			Thread.sleep(milliseconds);
+		} catch (InterruptedException e) {
+			System.out.println("[ERRO] Esquanto esperava "+ milliseconds + " segundos da Thead.\n" + e.getMessage());
+		}
+	}
+	
+    private String getCurrentDay (){
+        //Create a Calendar Object
+        Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+ 
+        //Get Current Day as a number
+        int todayInt = calendar.get(Calendar.DAY_OF_MONTH);
+        System.out.println("Today Int: " + todayInt +"\n");
+ 
+        //Integer to String Conversion
+        String todayStr = Integer.toString(todayInt);
+        System.out.println("Today Str: " + todayStr + "\n");
+ 
+        return todayStr;
+    }
+	
+}

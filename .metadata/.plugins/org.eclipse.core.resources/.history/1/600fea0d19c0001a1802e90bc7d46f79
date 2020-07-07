@@ -1,0 +1,23 @@
+package suporte;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class BaseUtil {
+
+	protected WebDriver navegador;
+	
+	public BaseUtil(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+	
+	public void takeScreenshotFromPage(String fileName) {
+		
+		new Screenshot().takeScreenshot(navegador, fileName);
+		
+	}
+	
+	public String mensagemToast() {
+		return navegador.findElement(By.id("toast-container")).getText();
+	}
+}

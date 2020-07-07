@@ -1,0 +1,29 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import suporte.BaseUtil;
+
+public class ClasseMe extends BaseUtil{
+
+	public ClasseMe(WebDriver navegador) {
+		super(navegador);
+	}
+
+	/**Clica sobre a aba "MORE DATA ABOUT YOU"
+	 * 
+	 * @author jay
+	 * @return MoreDataAboutYou
+	 */
+	public MoreDataAboutYou clicarNaAbaMoreDataAboutYou() {
+		
+		navegador.findElement(By.xpath("//a[@href=\"#moredata\"]")).click();
+		
+		return new MoreDataAboutYou(navegador);
+	}
+	
+	public void removeContatoDoUsuario(String telefone) {
+		
+	}
+}

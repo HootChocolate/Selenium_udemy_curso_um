@@ -1,0 +1,23 @@
+package suporte;
+
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Generate {
+
+	/** Este método retorna a hora atual, formatada como "yyyyMMddhhmmss"
+	 * 
+	 *  @author jay
+	 *  @return String
+	 *  @date 04/07/2020
+	 * 
+	 */
+	public static String dataHoraFormatada() {
+		
+		Date date = new Date();
+		
+		return  new SimpleDateFormat("yyyyMMddhhmmss").format(date);
+	}
+	
+}

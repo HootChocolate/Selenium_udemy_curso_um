@@ -1,0 +1,27 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class PaginaUsuarioLogado {
+	
+	WebDriver navegador;
+	
+	public PaginaUsuarioLogado(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+
+	public InformacoesSobreOUsuario clicarSobreInformacoesDoUsuario() {
+		
+		navegador.findElement(By.className("me")).click();
+		
+		return new InformacoesSobreOUsuario(navegador);
+	}
+	
+	public PageMoreAboutYou clicarSobreAbaMoreAboutYou() {
+		
+		navegador.findElement(By.xpath("//a[@href=\"#moredata\"]")).click();
+		
+		return new PageMoreAboutYou(navegador);
+	}
+}

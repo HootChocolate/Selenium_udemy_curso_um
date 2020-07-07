@@ -1,0 +1,17 @@
+package initialTest;
+
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.junit.Test;
+
+public class aux {
+
+	@Test
+	public void ts() {
+		Date date = new Date();
+		String dt = new SimpleDateFormat("yyyyMMddhhmmss").format(date);
+		System.out.println(dt);
+	}
+}

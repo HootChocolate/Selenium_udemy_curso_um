@@ -1,0 +1,39 @@
+package initialTest;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TestName;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import suporte.Generate;
+import suporte.Screenshot;
+
+public class aux {
+
+	@Rule
+	public TestName testName = new TestName();
+	
+	@Test
+	public void ts() {
+		
+		System.setProperty("webdriver.chrome.driver", "/home/jay/programs/ChromeDriver/chromedriver");
+		
+		WebDriver navegador = new ChromeDriver();
+		
+		navegador.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		navegador.get("https://www.facebook.com/");
+		
+		String fileName = Generate.dataHoraFormatada();
+		
+		new Screenshot()
+			.takeScreenshot(
+					navegador, "/home/jay/treinamento/Selenium-curso-um-taskIt/TaskIt/src/test/resources/screenshot/"
+					+ fileName + testName.getMethodName() + ".png");
+		
+		
+	}
+}

@@ -1,0 +1,13 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+public class LoginPage {
+
+	private WebDriver navegador;
+	
+	public LoginPage(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+	
+}

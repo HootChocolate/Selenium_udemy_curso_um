@@ -1,0 +1,13 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+import suporte.BaseUtil;
+
+public class PaginaUsuarioLogado extends BaseUtil{
+
+	public PaginaUsuarioLogado(WebDriver navegador) {
+		super(navegador);
+	}
+
+}

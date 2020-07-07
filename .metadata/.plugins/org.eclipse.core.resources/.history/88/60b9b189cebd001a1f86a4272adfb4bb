@@ -1,0 +1,33 @@
+package initialTest;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TestName;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class aux {
+
+	@Rule
+	public TestName testName = new TestName();
+	
+	@Test
+	public void ts() {
+		
+		System.setProperty("webdriver.chrome.driver", "/home/jay/programs/ChromeDriver/chromedriver");
+		
+		WebDriver navegador = new ChromeDriver();
+		
+		navegador.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+//		navegador.get("www.redtube.com");
+		
+//		String fileName = Generate.dataHoraFormatada();
+//		
+//		new Screenshot().takeScreenshot(navegador, "/home/jay/treinamento/tmp/" + fileName + testName.getMethodName() + ".png");
+		
+		
+	}
+}

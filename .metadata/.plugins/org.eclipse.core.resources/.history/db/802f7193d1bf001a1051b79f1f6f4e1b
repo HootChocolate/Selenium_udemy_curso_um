@@ -1,0 +1,12 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+public class InformacoesSobreOUsuario {
+
+	WebDriver navegador;
+	
+	public InformacoesSobreOUsuario(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+}

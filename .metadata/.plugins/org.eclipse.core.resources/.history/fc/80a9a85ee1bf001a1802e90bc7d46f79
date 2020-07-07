@@ -1,0 +1,26 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import suporte.BaseUtil;
+
+public class FormLoginPage extends BaseUtil {
+
+	public FormLoginPage(WebDriver navegador) {
+		super(navegador);
+	}
+	
+	/**
+	 * Adiciona o nome do usuário no campo de login.
+	 * 
+	 * @author jay
+	 * @return FormLoginPage
+	 */
+	public FormLoginPage informarLogin(String login) {
+		
+		navegador.findElement(By.id("signinbox")).findElement(By.name("login")).sendKeys(login);
+		
+		return this;
+	}
+}

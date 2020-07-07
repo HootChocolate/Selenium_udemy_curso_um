@@ -1,0 +1,50 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import suporte.BaseUtil;
+
+public class FormLoginPage extends BaseUtil {
+
+	public FormLoginPage(WebDriver navegador) {
+		super(navegador);
+	}
+	
+	/** Adiciona o nome do usuário no campo de login.
+	 * 
+	 * @param login
+	 * @author jay
+	 * @return FormLoginPage
+	 */
+	public FormLoginPage informarLogin(String login) {
+		
+		navegador.findElement(By.id("signinbox")).findElement(By.name("login")).sendKeys(login);
+		
+		return this;
+	}
+	
+	/**Adiciona a senha do usuário no campo de senha.
+	 * 
+	 * @author jay
+	 * @param senha
+	 * @return FormLoginPage
+	 */
+	public FormLoginPage informarSenha(String senha) {
+		
+		navegador.findElement(By.id("signinbox")).findElement(By.name("password")).sendKeys(senha);
+		
+		return this;
+	}
+	
+	/**Clica no botão "SIGN IN" para realizar o login na plataforma.
+	 * 
+	 * @author jay
+	 * @return PaginaUsuarioLogado
+	 */
+	public PaginaUsuarioLogado clicarSignInLogin() {
+		navegador.findElement(By.linkText("SIGN IN")).click();
+		
+		return new PaginaUsuarioLogado(navegador);
+	}
+}

@@ -1,0 +1,13 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+public class PaginaDoUsuario {
+	
+	WebDriver navegador;
+	
+	public PaginaDoUsuario(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+
+}

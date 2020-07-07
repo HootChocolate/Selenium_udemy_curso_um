@@ -1,0 +1,21 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+public class PageMoreAboutYou {
+	
+	WebDriver navegador;
+	
+	public PageMoreAboutYou(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+	
+	public void AddMoreData_addPhone(String phone) {
+		
+	}
+	
+	public void AddMoreData_addEmail(String email) {
+		
+	}
+	
+}

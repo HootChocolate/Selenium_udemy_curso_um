@@ -1,0 +1,19 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class InformacoesSobreOUsuario {
+
+	WebDriver navegador;
+	
+	public InformacoesSobreOUsuario(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+	
+	public PageMoreAboutYou clicarSobreMoreAboutYou() {
+		navegador.findElement(By.xpath("//a[@href=\"#moredata\"]")).click();
+		
+		return new PageMoreAboutYou(navegador);
+	}
+}

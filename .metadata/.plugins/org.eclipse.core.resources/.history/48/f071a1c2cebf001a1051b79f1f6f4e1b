@@ -1,0 +1,29 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+public class LoginFormPage {
+
+	WebDriver navegador;
+	
+	public LoginFormPage(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+	
+	public LoginFormPage digitarLogin(String login) {
+		
+		
+		return this;
+	}
+	
+	public LoginFormPage digitarSenha(String senha) {
+		
+		
+		return this;
+	}
+	
+	public PaginaDoUsuario clicarNoBotaoDeLogin() {
+		
+		return new PaginaDoUsuario(navegador);
+	}
+}

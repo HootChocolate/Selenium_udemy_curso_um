@@ -1,0 +1,7 @@
+package pages;
+
+import suporte.BaseUtil;
+
+public class LoginPage extends BaseUtil{
+
+}

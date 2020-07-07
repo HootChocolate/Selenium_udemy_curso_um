@@ -1,0 +1,14 @@
+package initialTest;
+
+import org.junit.Test;
+
+public class aux {
+
+	@Test
+	public void ts() {
+		
+		System.setProperty("webdrive.chrome.driver", "/home/jay/programs/ChromeDriver/chromedriver");
+		
+		
+	}
+}

@@ -1,0 +1,25 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import suporte.BaseUtil;
+
+public class PaginaUsuarioLogado extends BaseUtil{
+
+	public PaginaUsuarioLogado(WebDriver navegador) {
+		super(navegador);
+	}
+
+	/**Clica sobre o nome do usuário logado para acessar as informações do usuário.
+	 * 
+	 * @author jay
+	 * @return ClasseMe
+	 */
+	public ClasseMe clicarClasseMeInformacoesDoUsuario() {
+		
+		navegador.findElement(By.className("me")).click();
+		
+		return new ClasseMe(navegador);
+	}
+}

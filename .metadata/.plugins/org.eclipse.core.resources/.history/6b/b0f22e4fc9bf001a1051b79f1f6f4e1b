@@ -1,0 +1,28 @@
+package suporte;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class Web {
+
+	public static WebDriver createChrome(String site) {
+		
+		System.setProperty("webdriver.chrome.driver", "/home/jay/programs/ChromeDriver/chromedriver");
+		System.out.println("1");
+		
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("disable-web-security");
+		System.out.println("2");
+		WebDriver navegador = new ChromeDriver(options);
+		System.out.println("3");
+		navegador.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		navegador.get(site);
+		System.out.println("4");
+		System.out.println(navegador);
+		return navegador;
+	}
+	
+}

@@ -1,0 +1,32 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class LoginFormPage {
+
+	WebDriver navegador;
+	
+	public LoginFormPage(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+	
+	public LoginFormPage digitarLogin(String login) {
+		
+		navegador.findElement(By.id("signinbox")).findElement(By.name("login")).sendKeys(login);
+		
+		return this;
+	}
+	
+	public LoginFormPage digitarSenha(String password) {
+		
+		formLogin.findElement(By.name("password")).sendKeys(password);
+		
+		return this;
+	}
+	
+	public void clickLogin() {
+		navegador.findElement(By.linkText("SIGN IN")).click();
+	}
+}

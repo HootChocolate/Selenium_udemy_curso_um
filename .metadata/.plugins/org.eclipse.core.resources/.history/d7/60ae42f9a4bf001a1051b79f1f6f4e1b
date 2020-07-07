@@ -1,0 +1,23 @@
+package suporte;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class Web {
+
+	private WebDriver navegado;
+	
+	public WebDriver Web(WebDriver navegador) {
+		
+		System.setProperty("webdriver.chrome.driver", "/home/jay/programs/ChromeDriver/chromedriver");
+		
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("disable-web-security");
+		
+		this.navegado = new ChromeDriver(options);
+		
+		return this.navegado;
+	}
+	
+}

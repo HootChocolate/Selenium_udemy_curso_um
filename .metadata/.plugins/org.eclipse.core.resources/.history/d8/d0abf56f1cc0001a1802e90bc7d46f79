@@ -1,0 +1,6 @@
+testAdicionaInformacaoAdicionalDoUsuario,login,senha,tipo,contato,mensagem
+										,jose,josejose,E-mail,email@email.com,Your contact has been added!
+testRemoveContatoDoUsuario,login,senha,tipo,contato,mensagem
+						  ,jose,josejose,Phone,+5545999991111,"Rest in peace, dear phone!"
+testAlterarNomeDoUsuario,login,senha,novoNome,mensagem
+						,jose,josejose,Josue Jesus, "Now you will be called Jesus!"

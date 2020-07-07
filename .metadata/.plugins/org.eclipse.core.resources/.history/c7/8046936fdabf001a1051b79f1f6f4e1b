@@ -1,0 +1,53 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+/**
+ * Os métodos daqui devem dizer respeito apenas ao formulário de preenchimento de login
+ * 
+ * @author jay
+ * @date 06/07/2020
+ */
+public class LoginFormPage {
+
+	WebDriver navegador;
+	
+	public LoginFormPage(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+	
+	public LoginFormPage digitarLogin(String login) {
+		
+		navegador.findElement(By.id("signinbox")).findElement(By.name("login")).sendKeys(login);
+		
+		return this;
+	}
+	
+	public LoginFormPage digitarSenha(String senha) {
+		
+		navegador.findElement(By.id("signinbox")).findElement(By.name("password")).sendKeys(senha);
+		
+		return this;
+	}
+	
+	public PaginaUsuarioLogado clicarNoBotaoDeLogin() {
+		
+		navegador.findElement(By.linkText("SIGN IN")).click();
+		
+		return new PaginaUsuarioLogado(navegador);
+	}
+	
+	/**
+	 * Método funcional em conjunto com métodos estruturais da página de formulário
+	 * 
+	 * @author jay
+	 */
+	public PaginaUsuarioLogado realizarLogin(String login, String senha) {
+		 digitarLogin(login)
+		.digitarSenha(senha)
+		.clicarNoBotaoDeLogin();
+		
+		return new PaginaUsuarioLogado(navegador);
+	}
+}

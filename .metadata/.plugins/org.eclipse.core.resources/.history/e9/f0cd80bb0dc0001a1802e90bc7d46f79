@@ -1,0 +1,22 @@
+package suporte;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import pages.MoreDataAboutYou;
+
+public class BaseUtil {
+
+	protected WebDriver navegador;
+	
+	public BaseUtil(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+	
+	public void takeScreenshotFromPage(String testName) {
+		Screenshot screen = new Screenshot();
+		screen.takeScreenshot(navegador, testName + ".png");
+		
+	}
+}

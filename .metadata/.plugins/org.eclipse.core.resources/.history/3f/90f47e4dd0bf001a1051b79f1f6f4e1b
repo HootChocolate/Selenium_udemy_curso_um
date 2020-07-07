@@ -1,0 +1,21 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+/**
+ * Página secreta, deve ser realizado login para ter acesso
+ * 
+ * @author jay
+ */
+public class PaginaSecreta {
+	
+	WebDriver navegador;
+	
+	public PaginaSecreta(WebDriver navegador) {
+		this.navegador = navegador;
+	}
+
+	public InformacoesSobreOUsuario clicarSobreInformacoesDoUsuario() {
+		
+	}
+}

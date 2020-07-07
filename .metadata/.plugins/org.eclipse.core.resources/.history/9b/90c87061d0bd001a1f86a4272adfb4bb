@@ -1,0 +1,178 @@
+package initialTest;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TestName;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import suporte.Screenshot;
+
+public class testAdicionarInformacaoAdicionalDoUsuario {
+	
+	WebDriver navegador;
+	
+	@Rule
+	public TestName testName = new TestName();
+	
+	@BeforeClass
+	public static void beforeClass() {
+		// Instância a property do chromedriver
+		System.setProperty("webdriver.chrome.driver", "/home/jay/programs/ChromeDriver/chromedriver");
+	}
+	
+	/**
+	 * Como essa classe trata de informações sobre o usuário, antes da execução de todo teste
+	 * o navegador fara o login e irá para a página de informações adicionais do usuário
+	 * 
+	 * @author jay
+	 * @date 03/07/2020
+	 * */
+	@Before
+	public void setup() {
+		
+		ChromeOptions options = new ChromeOptions();
+		
+		// desativando CORS 
+		options.addArguments("disable-web-security");
+		
+		navegador = new ChromeDriver(options);
+		
+		// Dar um tempo para o carregamento dos scripts
+		navegador.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		
+		// acessa o site
+		navegador.get("http://juliodelima.com.br/taskit/");
+		
+		// clica na div de classe "nav-wrapper" que contem um link de data-target "signinbox"
+		navegador.findElement(By.xpath("//div[@class=\"nav-wrapper\"]//a[@data-target=\"signinbox\"]")).click();
+		
+		// Pega o formulario de login através do id "signinbox"
+		WebElement formLogin = navegador.findElement(By.id("signinbox"));
+		
+		// envia a informação de login para o campo de nome "login"
+		formLogin.findElement(By.name("login")).sendKeys("jose");
+		
+		// envia a informação de login para o campo de nome "password"
+		formLogin.findElement(By.name("password")).sendKeys("josejose");
+		
+		// dentro do form de login, clica no link com nome "SIGN IN" para realizar o login
+		formLogin.findElement(By.linkText("SIGN IN")).click();
+		
+		// clica na class "me", para acessar as informações sobre o usuário
+		navegador.findElement(By.className("me")).click();
+	}
+	
+	@After
+	public void teardown() {
+		// fecha o navegador
+		// navegador.quit();
+	}
+	
+	/** Neste teste é aberto o formulario de adicão de informações adicional do usuário,
+	 * é selecionado o tipo "Phone", adicionado o valor "+5545999991111" e link "SAVE".
+	 * Ao final da execução o valor do contato deve ser adicionado a lista de informações adicionais.
+	 * 
+	 * @author jay
+	 * @date 03/07/2020 
+	 */
+	
+	@Test
+	public void testAdicionaInformacaoAdicionalDoUsuario() {
+		
+		// clica sobre o link "MORE DATA ABOUT YOU" 
+		navegador.findElement(By.xpath("//a[@href=\"#moredata\"]")).click();
+
+		// Encontra o botao "+ ADD MORE DATA" pelo id "moredata", depois clica sobre o button com data-target "addmoredata"
+		WebElement addMoreDataButton = navegador.findElement(By.id("moredata"));
+		addMoreDataButton.findElement(By.xpath("//button[@data-target=\"addmoredata\"]")).click();
+		
+		// Pega o formulario de preenchimento de informações pelo id="addmoredata"
+		WebElement formAddMoreData = navegador.findElement(By.id("addmoredata"));
+		
+		// No formulario, seleciona a opção "Phone" no combo box, pega através do name="type"
+		WebElement selectType= formAddMoreData.findElement(By.name("type"));
+		
+		// Selecione o combo box de valor Visivel "Phone"
+		new Select(selectType).selectByVisibleText("Phone");
+		
+		// No formulario, digita o texto "+5545999991111" através do name="contact"
+		formAddMoreData.findElement(By.name("contact")).sendKeys("+5545999991111");
+		
+		// Clica sobre o link com o texto "SAVE" para salvar o contato
+		formAddMoreData.findElement(By.linkText("SAVE")).click();
+		
+		// valida se o contato foi salvo, verificando o texto de dentro da div de id "toast-container", devendo se igual a "Your contact has been added!"
+//		String mensagemDeContatoSalvo = navegador.findElement(By.id("toast-container")).getText();
+
+//		assertEquals("Problema com a toast message de contato salvo, ao salvar um numero de telefone", mensagemDeContatoSalvo, "Your contact has been added!");
+		
+	}
+	
+	/**
+	 * Para a realização desse teste é necessário que tenha o telefone cadastrado previamente,
+	 * todavia ele não deve depender da execução de outro teste.
+	 * @author jay
+	 * @date 04/07/2020
+	 */
+	@Ignore
+	@Test
+	public void testRemoveInformacaoAdicionalDoUsuario() {
+		
+		// Clicar no link que contém o texto "MORE DATA ABOUT YOU"
+		navegador.findElement(By.linkText("MORE DATA ABOUT YOU")).click();
+		
+		// encontra o span que tenha o texto "+5545999991111" e clica no link seguinte (onde deve excluir o contato)
+		navegador.findElement(By.xpath("//span[text()=\"+5545999991111\"]//following-sibling::a")).click();
+		
+		// aguardar que apareca o javascript (apenas didatico)
+		new WebDriverWait(navegador, 10).until(ExpectedConditions.alertIsPresent());
+		
+		// aceita a mensagem mostrada pelo javascript para exclusão
+		navegador.switchTo().alert().accept();
+		
+		// pega o toast pelo id "toast-container"
+		WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
+		
+		// pega a mensagem do toast
+		String mensagemDeRemocao = mensagemPop.getText();
+	
+		// screnshot
+		new Screenshot().takeScreenshot(navegador, "/home/jay/treinamento/tmp/" + testAdicionarInformacaoAdicionalDoUsuario.class.getSimpleName() + ".png");
+		
+		// espera até que a mensagem toast suma
+		new WebDriverWait(navegador, 10).until(ExpectedConditions.stalenessOf(mensagemPop));
+
+		// validar mensagem final "Rest in peace, dear phone!"
+		assertEquals("A mensagem que era esperada durante uma remocao esta com algum problema", "Rest in peace, dear phone!", mensagemDeRemocao);
+		
+		// Clica no link com o texto "Logout"
+		navegador.findElement(By.linkText("Logout")).click();
+		
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
