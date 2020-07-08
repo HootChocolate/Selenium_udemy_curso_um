@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestAlterarInformacoesDoUsuario" project="TaskIt" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="pageObject.TestAlterarInformacoesDoUsuario" time="7.446">
+    <testcase name="testAdicionaInformacaoAdicionalDoUsuario{senha=josejose, tipo=E-mail, Duration(ms)=2819.0, mensagem=Your contact has been added!, login=jose, contato=email@email.com}" classname="pageObject.TestAlterarInformacoesDoUsuario" time="7.446"/>
+  </testsuite>
+</testrun>

@@ -1,2 +1,2 @@
-testAdicionaInformacaoAdicionalDoUsuarioCSVDois,tipo,telefone,mensagem,Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms),Duration(ms)
-"",Phone,+554555555555,Your contact has been added!,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0,914.0
+testAdicionaInformacaoAdicionalDoUsuarioCSVDois,tipo,telefone,mensagem
+									           ,Phone,+554555555555,Your contact has been added!

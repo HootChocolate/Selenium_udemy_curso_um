@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestAlterarInformacoesDoUsuario" project="TaskIt" tests="1" started="1" failures="0" errors="1" ignored="0">
+  <testsuite name="pageObject.TestAlterarInformacoesDoUsuario" time="9.575">
+    <testcase name="testAdicionaInformacaoAdicionalDoUsuario{senha=josejose, tipo=E-mail, Duration(ms)=2923.0, mensagem=Your contact has been added!, login=jose, contato=email@email.com}" classname="pageObject.TestAlterarInformacoesDoUsuario" time="9.575">
+      <error>org.openqa.selenium.NoSuchElementException: Cannot locate an element using xpath=//div[@class="section"]//ul[@class="tabs"]//li[3]
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'jay-Inspiron-15-3567', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '5.4.0-40-generic', java.version: '11.0.7'
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:327)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at pages.ClasseMe.clicarNaAbaMoreDataAboutYou(ClasseMe.java:21)
+	at pageObject.TestAlterarInformacoesDoUsuario.testAdicionaInformacaoAdicionalDoUsuario(TestAlterarInformacoesDoUsuario.java:63)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.easetech.easytest.runner.InternalParameterizedStatement.methodCompletesWithParameters(InternalParameterizedStatement.java:200)
+	at org.easetech.easytest.runner.InternalParameterizedStatement.runWithCompleteAssignment(InternalParameterizedStatement.java:158)
+	at org.easetech.easytest.runner.InternalParameterizedStatement.runWithAssignment(InternalParameterizedStatement.java:141)
+	at org.easetech.easytest.runner.InternalParameterizedStatement.evaluate(InternalParameterizedStatement.java:99)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:61)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.easetech.easytest.runner.DataDrivenTestRunner$1.evaluate(DataDrivenTestRunner.java:350)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.easetech.easytest.strategy.SerialScheduler.schedule(SerialScheduler.java:16)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.easetech.easytest.util.RunAftersWithOutputData.evaluate(RunAftersWithOutputData.java:111)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:89)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:542)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

@@ -1,0 +1,69 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import suporte.BaseUtil;
+
+public class FormLoginPage extends BaseUtil {
+
+	public FormLoginPage(WebDriver navegador) {
+		super(navegador);
+	}
+	
+	/** Adiciona o nome do usuário no campo de login.
+	 * 
+	 * @param login
+	 * @author jay
+	 * @return FormLoginPage
+	 */
+	public FormLoginPage informarLogin(String login) {
+		
+		navegador.findElement(By.id("signinbox")).findElement(By.name("login")).sendKeys(login);
+		
+		return this;
+	}
+	
+	/**Adiciona a senha do usuário no campo de senha.
+	 * 
+	 * @author jay
+	 * @param senha
+	 * @return FormLoginPage
+	 */
+	public FormLoginPage informarSenha(String senha) {
+		
+		navegador.findElement(By.id("signinbox")).findElement(By.name("password")).sendKeys(senha);
+		
+		return this;
+	}
+	
+	/**Clica no botão "SIGN IN" para realizar o login na plataforma.
+	 * 
+	 * @author jay
+	 * @return PaginaUsuarioLogado
+	 */
+	public HomePageUsuarioLogado clicarSignInRealizarLogin() {
+		WebElement signInButton = navegador.findElement(By.linkText("SIGN IN"));
+		new WebDriverWait(navegador, 5).until(ExpectedConditions.elementToBeClickable(signInButton));
+		signInButton.click();
+		return new HomePageUsuarioLogado(navegador);
+	}
+	
+	/** Método funcional que utiliza os métodos estruturais criados nessa classe.
+	 * 
+	 * @param login
+	 * @param senha
+	 * @return PaginaUsuarioLogado
+	 */
+	public HomePageUsuarioLogado realizarLogin(String login, String senha) {
+		
+		informarLogin(login);
+		informarSenha(senha);
+		clicarSignInRealizarLogin();
+		
+		return new HomePageUsuarioLogado(navegador);
+	}
+}

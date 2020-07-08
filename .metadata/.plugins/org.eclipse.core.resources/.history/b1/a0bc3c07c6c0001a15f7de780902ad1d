@@ -1,0 +1,25 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import suporte.BaseUtil;
+
+public class HomePageUsuarioLogado extends BaseUtil{
+
+	public HomePageUsuarioLogado(WebDriver navegador) {
+		super(navegador);
+	}
+
+	public ClasseMe clicarClasseMeInformacoesDoUsuario() {
+		
+		navegador.findElement(By.className("me"));
+		
+		WebDriverWait espera = new WebDriverWait(navegador, 5);
+		
+		return new ClasseMe(navegador);
+	}
+	
+}

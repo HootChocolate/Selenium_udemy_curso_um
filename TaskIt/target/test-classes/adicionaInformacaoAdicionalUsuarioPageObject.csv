@@ -1,7 +1,7 @@
-testAdicionaInformacaoAdicionalDoUsuario,login,senha,tipo,contato,mensagem
-"",jose,josejose,E-mail,email@email.com,Your contact has been added!
+testAdicionaInformacaoAdicionalDoUsuario,login,senha,tipo,contato,mensagem,Duration(ms)
+"",jose,josejose,E-mail,email@email.com,Your contact has been added!,4750.0
 testRemoveContatoDoUsuario,login,senha,tipo,contato,mensagem
 "",jose,josejose,Phone,+5545999991111,"Rest in peace, dear phone!"
-testAlterarNomeDoUsuario,login,senha,novoNome,mensagem,Duration(ms)
-"",jose,josejose,Jesus,Now you will be called,2836.0
-"",jose,josejose,Willian Ronaldo,Now you will be called,2928.0
+testAlterarNomeDoUsuario,login,senha,novoNome,mensagem
+"",jose,josejose,Jesus,Now you will be called
+"",jose,josejose,Willian Ronaldo,Now you will be called

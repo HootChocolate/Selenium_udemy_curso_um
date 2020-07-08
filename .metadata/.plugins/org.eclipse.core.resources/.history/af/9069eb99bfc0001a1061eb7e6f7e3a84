@@ -1,0 +1,25 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import suporte.BaseUtil;
+
+public class HomePageUsuarioLogado extends BaseUtil{
+
+	public HomePageUsuarioLogado(WebDriver navegador) {
+		super(navegador);
+	}
+
+	public ClasseMe clicarClasseMeInformacoesDoUsuario() {
+		
+		WebElement el = navegador.findElement(By.className("me"));
+		
+		System.out.println(el);
+		el.click();
+		
+		return new ClasseMe(navegador);
+	}
+	
+}

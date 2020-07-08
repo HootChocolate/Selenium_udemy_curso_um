@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import suporte.BaseUtil;
 
@@ -18,7 +20,10 @@ public class ClasseMe extends BaseUtil{
 
 	public MoreDataAboutYou clicarNaAbaMoreDataAboutYou() {
 		
-		navegador.findElement(By.xpath("//a[@href=\"#moredata\"]")).click();
+		WebElement abaMoreData = navegador.findElement(By.xpath("//a[@href=\"#moredata\"]"));
+		
+		new WebDriverWait(navegador, 5).until(ExpectedConditions.elementToBeClickable(abaMoreData));
+		abaMoreData.click();
 		
 		return new MoreDataAboutYou(navegador);
 	}

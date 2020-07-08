@@ -1,0 +1,22 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import suporte.BaseUtil;
+
+public class HomePageUsuarioLogado extends BaseUtil{
+
+	public HomePageUsuarioLogado(WebDriver navegador) {
+		super(navegador);
+	}
+
+	public ClasseMe clicarClasseMeInformacoesDoUsuario() {
+		
+		navegador.findElement(By.xpath("//a[@href=\"http://www.juliodelima.com.br/taskit/me\"]")).click();
+		
+		return new ClasseMe(navegador);
+	}
+	
+}

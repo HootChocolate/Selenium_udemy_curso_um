@@ -1,0 +1,37 @@
+package suporte;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class Web {
+	
+	// Configuracao BrowserStack para testes na nuvem
+	public static final String USERNAME = "willianronaldo1";
+	public static final String AUTOMATE_KEY = "VdqMDmy3qyzfxQdsYdif";
+	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+
+	/**Configura o ChromeDriver, adiciona opções e devolve uma instância de navegador.
+	 * 
+	 * @author jay
+	 * @param site
+	 * @return WebDriver
+	 */
+	public static WebDriver createChrome(String site) {
+		
+		System.setProperty("webdriver.chrome.driver", "/home/jay/programs/ChromeDriver/chromedriver");
+		
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("disable-web-security"); // Desabilita CORS
+		
+		WebDriver navegador = new ChromeDriver(options);
+
+		navegador.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		navegador.get(site);
+
+		return navegador;
+	}
+	
+}

@@ -1,0 +1,134 @@
+package pageObject;
+
+import static org.junit.Assert.assertEquals;
+
+import org.easetech.easytest.annotation.DataLoader;
+import org.easetech.easytest.annotation.Param;
+import org.easetech.easytest.runner.DataDrivenTestRunner;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TestName;
+import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import pages.LoginPage;
+import suporte.BaseUtil;
+import suporte.Web;
+
+/**
+ * Classe utilizando PageObject para fazer as interacoes.
+ * Foi refatorada no final do curso de Selenium da Udemy com o Julio de Lima
+ * 
+ * @author jay
+ */
+@RunWith(DataDrivenTestRunner.class) 	// Possibilita ter apenas um arquivo .csv com todas as classes e informações
+@DataLoader(filePaths = "adicionaInformacaoAdicionalUsuarioPageObject.csv")
+public class TestAlterarInformacoesDoUsuario{
+	
+	WebDriver navegador;
+	
+	@Rule
+	public TestName testName = new TestName();
+
+	@Before
+	public void setup() {
+		navegador = Web.createChrome("http://juliodelima.com.br/taskit/");
+//		navegador = Web.createRemoteWebDriver(); // Erro
+	}
+	
+	@After
+	public void teardown() {
+		navegador.quit();
+	}
+	
+	/**
+	 * Teste de adicionar informação do usuário na aba MORE ABOUT YOU com informações vindas do arquivo CSV.
+	 * 
+	 * @author jay
+	 */
+//	@Ignore
+	@Test
+	public void testAdicionaInformacaoAdicionalDoUsuario(
+			@Param(name = "login")String login,
+			@Param(name = "senha")String senha,
+			@Param(name = "tipo")String tipo,
+			@Param(name = "contato")String contato,
+			@Param(name = "mensagem")String mensagem
+			) {
+		String resultadoToastMessage = new LoginPage(navegador)
+			.cliqueSignInBarraNavegacao()
+			.realizarLogin(login, senha)
+			.clicarClasseMeInformacoesDoUsuario()
+			.clicarNaAbaMoreDataAboutYou()
+			.clicarBotaoAddMoreData()
+			.tipoDeDadoParaSalvar(tipo)
+			.adicionarTelefone(contato)
+			.salvarContato()
+			.getToastMessage();
+		
+		assertEquals("Erro ao adicionar informação adicional do usuário", mensagem, resultadoToastMessage);
+	}
+	
+	/**
+	 * Classe de teste para remoção de um contato pre-existente do usuário
+	 * 
+	 * @author jay
+	 */
+//	@Ignore
+//	@Test
+	public void testRemoveContatoDoUsuario(
+			@Param(name = "login") String login,
+			@Param(name = "senha") String senha,
+			@Param(name = "contato") String contato,
+			@Param(name = "mensagem") String mensagem
+			) {
+		String resultadoToastMessage = new LoginPage(navegador)
+				.cliqueSignInBarraNavegacao()
+				.informarLogin(login)
+				.informarSenha(senha)
+				.clicarSignInRealizarLogin()
+				.clicarClasseMeInformacoesDoUsuario()
+				.clicarNaAbaMoreDataAboutYou()
+				.clicarIconeRemoverContato(contato)
+				.aceitarPopUp()
+				.getToastMessage();
+		
+		assertEquals("Erro na mensagem de remoção de um contato", mensagem, resultadoToastMessage);
+	}
+	
+	/**Este método altera o nome do usuário, consumindo informações do arquivo CSV
+	 * 
+	 * @param login
+	 * @param senha
+	 * @param novoNome
+	 * @param mensagem
+	 */
+//	@Test
+	public void testAlterarNomeDoUsuario(
+			@Param(name = "login") String login,
+			@Param(name = "senha") String senha,
+			@Param(name = "novoNome") String novoNome,
+			@Param(name = "mensagem") String mensagem
+			) {
+		
+		String auxMensagem = mensagem + " " + novoNome + "!";
+		
+		String resultadoToastMessage = new LoginPage(navegador)
+		.cliqueSignInBarraNavegacao()
+		.realizarLogin(login, senha)
+		.clicarClasseMeInformacoesDoUsuario()
+		.alterarNomeDoUsuario(novoNome)
+		.clicarBotaoChangeMyName()
+		.getToastMessage();
+		
+		assertEquals("Erro no método de alteração do nome do usuário", auxMensagem, resultadoToastMessage);
+		
+//		new LoginPage(navegador).takeScreenshotFromPage(adicionaInformacaoAdicionalUsuarioPageObject.class.getSimpleName() + ".png");
+	}
+	
+}

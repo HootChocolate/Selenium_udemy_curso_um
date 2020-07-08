@@ -1,0 +1,12 @@
+pages/FormLoginPage.class
+suporte/BaseUtil.class
+initialTest/testAdicionarInformacaoAdicionalDoUsuario.class
+pages/ClasseMe.class
+pages/HomePageUsuarioLogado.class
+testes/testaInsercaoEmailDoUsuario.class
+suporte/Screenshot.class
+pages/MoreDataAboutYou.class
+pageObject/TestAlterarInformacoesDoUsuario.class
+pages/LoginPage.class
+suporte/DateUtil.class
+suporte/Web.class
