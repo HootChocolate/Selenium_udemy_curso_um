@@ -33,8 +33,8 @@ public class TestAlterarInformacoesDoUsuario{
 
 	@Before
 	public void setup() {
-		navegador = Web.createChrome("http://juliodelima.com.br/taskit/");
-//		navegador = Web.createRemoteWebDriver("http://juliodelima.com.br/taskit/");
+//		navegador = Web.createChrome("http://juliodelima.com.br/taskit/");
+		navegador = Web.createRemoteWebDriver("http://juliodelima.com.br/taskit/");
 		
 		// Erro, não encontra a classe "me" quando executa os testes na nuvem, só local
 	}

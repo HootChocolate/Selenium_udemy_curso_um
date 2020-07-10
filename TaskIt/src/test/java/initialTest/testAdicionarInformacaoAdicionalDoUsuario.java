@@ -226,8 +226,8 @@ public class testAdicionarInformacaoAdicionalDoUsuario {
 		String mensagemDeRemocao = mensagemPop.getText();
 	
 		// onde será salvo o screenshot
-		String pathToSaveScreenshot = "/home/jay/treinamento/Selenium-curso-um-taskIt/TaskIt/src/test/resources/screenshot/" 
-				+ DateUtil.getDateFormatyyyyMMddhhmmss() + testName.getMethodName() + ".png";
+//		String pathToSaveScreenshot = "/home/jay/treinamento/Selenium-curso-um-taskIt/TaskIt/src/test/resources/screenshot/" 
+//				+ DateUtil.getDateFormatyyyyMMddhhmmss() + testName.getMethodName() + ".png";
 		
 		// save screenshot
 		// new Screenshot().takeScreenshot(navegador, pathToSaveScreenshot);
